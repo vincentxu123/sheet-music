@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --background-size: 24px 24px;
+  --background-image: radial-gradient(circle at 1px 1px, #e0e7ff 1px, transparent 0);
 }
 
 @theme inline {
@@ -21,6 +23,8 @@
 
 body {
   background: var(--background);
+  background-size: var(--background-size);
+  background-image: var(--background-image);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
