@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vincent's Sheet Music",
-  description: "Sheet music from Vincent Xu",
+  title: "Sheet Music",
+  description: "Sheet music by Vincent Xu",
 };
 
 export default function RootLayout({

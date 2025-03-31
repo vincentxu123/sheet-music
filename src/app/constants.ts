@@ -1,6 +1,18 @@
-import racingIntoTheNightThumbnail from '../../public/racing_into_the_night.jpg';
-import marchSnowThumbNail from '../../public/march_snow.jpg';
-import cantTakeMyEyesOffYouThumbnail from '../../public/cant_take_my_eyes_off_you.jpg';
+import racingIntoTheNightThumbnail from '../../public/racing_into_the_night/thumbnail.jpg';
+import marchSnowThumbNail from '../../public/march_snow/thumbnail.jpg';
+import cantTakeMyEyesOffYouThumbnail from '../../public/cant_take_my_eyes_off_you/thumbnail.jpg';
+import { StaticImageData } from 'next/image';
+
+export interface SelectedSong {
+  id: number;
+  title: string;
+  composer: string;
+  year: number;
+  src: StaticImageData;
+  fullSheets: string;
+  difficulty: string;
+  musescoreLink: string;
+}
 
 // TODO: try SQL Lite?
 export const sheetMusicData = [
@@ -10,9 +22,9 @@ export const sheetMusicData = [
       composer: "YOASOBI",
       year: 2019,
       src: racingIntoTheNightThumbnail,
-      fullImage:
-        "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&h=1200&fit=crop",
+      fullSheets: "/racing_into_the_night/full_sheets.pdf",
       difficulty: "Intermediate",
+      musescoreLink: "https://musescore.com/user/14842106/scores/24385660/s/4mReTU",
     },
     {
       id: 2,
@@ -20,9 +32,9 @@ export const sheetMusicData = [
       composer: "July",
       year: 2019,
       src: marchSnowThumbNail,
-      fullImage:
-        "https://images.unsplash.com/photo-1593169158019-e33d5a325c4c?w=800&h=1200&fit=crop",
+      fullSheets: "/march_snow/full_sheets.pdf",
       difficulty: "Beginner",
+      musescoreLink: "https://musescore.com/user/14842106/scores/24385654/s/pVIRyM",
     },
     {
       id: 3,
@@ -30,9 +42,9 @@ export const sheetMusicData = [
       composer: "Frankie Valli",
       year: 1967,
       src: cantTakeMyEyesOffYouThumbnail,
-      fullImage:
-        "https://images.unsplash.com/photo-1514119412350-e174d90d280e?w=800&h=1200&fit=crop",
+      fullSheets: "/cant_take_my_eyes_off_you/full_sheets.pdf",
       difficulty: "Advanced",
+      musescoreLink: "https://musescore.com/user/14842106/scores/24385639/s/JbJKsD",
     },
     // {
     //   id: 4,
