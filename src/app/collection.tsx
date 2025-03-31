@@ -28,8 +28,8 @@ export const Collection = ({ setSelectedSong }: CollectionProps) => {
             >
               <div className="overflow-hidden">
                 <Image
-                  src={sheet.src}
-                  alt={`${sheet.title} sheet music preview`}
+                  src={sheet.thumbnail}
+                  alt={`${sheet.title} sheet music thumbnail`}
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
@@ -62,20 +62,13 @@ export const SongPreview = ({ selectedSong, setSelectedSong }: SongPreviewProps)
               </button>
 
               <div className="p-10">
-                <h2 className="text-3xl font-bold mb-2 text-gray-900">
-                  {selectedSong.title}
-                </h2>
-                <p className="text-gray-600 text-lg mb-4">
-                  By {selectedSong.composer} ({selectedSong.year})
-                </p>
-
                 <Link
                   href={selectedSong.musescoreLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 mb-4 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-100 font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-100 font-medium"
                 >
-                  View on Musescore
+                  Listen on Musescore
                   <ExternalLink className="w-4 h-4" />
                 </Link>
                 <iframe

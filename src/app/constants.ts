@@ -1,6 +1,7 @@
 import racingIntoTheNightThumbnail from '../../public/racing_into_the_night/thumbnail.jpg';
 import marchSnowThumbNail from '../../public/march_snow/thumbnail.jpg';
 import cantTakeMyEyesOffYouThumbnail from '../../public/cant_take_my_eyes_off_you/thumbnail.jpg';
+
 import { StaticImageData } from 'next/image';
 
 export interface SelectedSong {
@@ -8,20 +9,19 @@ export interface SelectedSong {
   title: string;
   composer: string;
   year: number;
-  src: StaticImageData;
+  thumbnail: StaticImageData;
   fullSheets: string;
   difficulty: string;
   musescoreLink: string;
 }
 
-// TODO: try SQL Lite?
-export const sheetMusicData = [
+export const sheetMusicData: SelectedSong[] = [
     {
       id: 1,
-      title: "Racing Into the Night",
+      title: "Racing Into The Night",
       composer: "YOASOBI",
       year: 2019,
-      src: racingIntoTheNightThumbnail,
+      thumbnail: racingIntoTheNightThumbnail,
       fullSheets: "/racing_into_the_night/full_sheets.pdf",
       difficulty: "Intermediate",
       musescoreLink: "https://musescore.com/user/14842106/scores/24385660/s/4mReTU",
@@ -31,7 +31,7 @@ export const sheetMusicData = [
       title: "March Snow",
       composer: "July",
       year: 2019,
-      src: marchSnowThumbNail,
+      thumbnail: marchSnowThumbNail,
       fullSheets: "/march_snow/full_sheets.pdf",
       difficulty: "Beginner",
       musescoreLink: "https://musescore.com/user/14842106/scores/24385654/s/pVIRyM",
@@ -41,19 +41,9 @@ export const sheetMusicData = [
       title: "Can't Take My Eyes Off You",
       composer: "Frankie Valli",
       year: 1967,
-      src: cantTakeMyEyesOffYouThumbnail,
+      thumbnail: cantTakeMyEyesOffYouThumbnail,
       fullSheets: "/cant_take_my_eyes_off_you/full_sheets.pdf",
       difficulty: "Advanced",
       musescoreLink: "https://musescore.com/user/14842106/scores/24385639/s/JbJKsD",
     },
-    // {
-    //   id: 4,
-    //   title: "Nocturne in E-flat major",
-    //   composer: "Frédéric Chopin",
-    //   year: 1830,
-    //   src: "https://images.unsplash.com/photo-1551225183-94acb7d595b6?w=400&h=300&fit=crop",
-    //   fullImage:
-    //     "https://images.unsplash.com/photo-1551225183-94acb7d595b6?w=800&h=1200&fit=crop",
-    //   difficulty: "Advanced",
-    // },
   ];

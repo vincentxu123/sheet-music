@@ -4,7 +4,7 @@ import { Code, Github, Linkedin, Mail, MapPin, Music } from "lucide-react"
 export const Introduction = () => {
     return (
         <div className="container mx-auto py-12">
-          <div className="mb-16 p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-white border border-blue-100">
+          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border border-blue-100/50 backdrop-blur-sm shadow-[0_0_50px_rgba(219,234,254,0.3)] relative overflow-hidden">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl font-bold text-gray-900 mb-4">
                 {`Hi, I'm Vincent 👋`}
@@ -25,7 +25,8 @@ export const Introduction = () => {
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
                 {`This collection of piano sheet music include my own arrangements to songs I've found
-                interesting throughout the past years. I'll continue to add more in the future.`}
+                interesting throughout the past years. These songs can range from J-Pop to jazz with no
+                particular category. More sheets to come!`}
               </p>
 
               <div className="h-px bg-blue-100 my-6" />
