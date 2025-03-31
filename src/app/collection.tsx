@@ -51,32 +51,38 @@ export const Collection = ({ setSelectedSong }: CollectionProps) => {
 
 export const SongPreview = ({ selectedSong, setSelectedSong }: SongPreviewProps) => {
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-[fadeIn_0.2s_ease-out]">
-            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-[0_0_50px_rgba(0,0,0,0.15)] border border-blue-50 animate-[slideUp_0.3s_ease-out]">
-              <button
-                onClick={() => setSelectedSong(null)}
-                className="absolute right-6 top-6 p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
-                aria-label="Close modal"
-              >
-                <X className="w-6 h-6" />
-              </button>
+    <div
+      className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-[fadeIn_0.2s_ease-out]"
+      onClick={() => setSelectedSong(null)}
+    >
+      <div
+        className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-[0_0_50px_rgba(0,0,0,0.15)] border border-blue-50 animate-[slideUp_0.3s_ease-out]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={() => setSelectedSong(null)}
+          className="absolute right-6 top-6 p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+          aria-label="Close modal"
+        >
+          <X className="w-6 h-6" />
+        </button>
 
-              <div className="p-10">
-                <Link
-                  href={selectedSong.musescoreLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-100 font-medium"
-                >
-                  Listen on Musescore
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
-                <iframe
-                  src={selectedSong.fullSheets}
-                  className="w-full rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.1)] min-h-[800px]"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="p-10">
+          <Link
+            href={selectedSong.musescoreLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-100 font-medium"
+          >
+            Listen on Musescore
+            <ExternalLink className="w-4 h-4" />
+          </Link>
+          <iframe
+            src={selectedSong.fullSheets}
+            className="w-full rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.1)] min-h-[800px]"
+          />
+        </div>
+      </div>
+    </div>
   )
 }
