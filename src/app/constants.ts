@@ -1,8 +1,11 @@
 import racingIntoTheNightThumbnail from '../../public/racing_into_the_night/thumbnail.jpg';
 import marchSnowThumbNail from '../../public/march_snow/thumbnail.jpg';
 import cantTakeMyEyesOffYouThumbnail from '../../public/cant_take_my_eyes_off_you/thumbnail.jpg';
+import redBeanThumbnail from '../../public/red_bean/thumbnail.png';
 
 import { StaticImageData } from 'next/image';
+
+type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced'
 
 export interface SelectedSong {
   id: number;
@@ -11,7 +14,7 @@ export interface SelectedSong {
   year: number;
   thumbnail: StaticImageData;
   fullSheets: string;
-  difficulty: string;
+  difficulty: Difficulty;
   musescoreLink: string;
 }
 
@@ -45,5 +48,15 @@ export const sheetMusicData: SelectedSong[] = [
       fullSheets: "/cant_take_my_eyes_off_you/full_sheets.pdf",
       difficulty: "Advanced",
       musescoreLink: "https://musescore.com/user/14842106/scores/24385639/s/JbJKsD",
+    },
+    {
+      id: 4,
+      title: "紅豆",
+      composer: "Faye Wong",
+      year: 1998,
+      thumbnail: redBeanThumbnail,
+      fullSheets: "/red_bean/full_sheets.pdf",
+      difficulty: "Intermediate",
+      musescoreLink: "https://musescore.com/user/14842106/scores/24540634/s/vayKDh",
     },
   ];
