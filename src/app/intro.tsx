@@ -4,7 +4,7 @@ import { Code, Github, Linkedin, Mail, MapPin, Music } from "lucide-react"
 export const Introduction = () => {
     return (
         <div className="container mx-auto py-12">
-          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border-2 backdrop-blur-sm relative overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_70px_rgba(219,234,254,0.5)]"
+          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border-2 backdrop-blur-sm relative overflow-hidden transition-all duration-300"
             style={{
               animation: 'pulse-border 3s infinite ease-in-out',
               backgroundSize: '200% 200%',
