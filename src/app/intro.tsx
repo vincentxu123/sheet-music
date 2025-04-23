@@ -4,7 +4,16 @@ import { Code, Github, Linkedin, Mail, MapPin, Music } from "lucide-react"
 export const Introduction = () => {
     return (
         <div className="container mx-auto py-12">
-          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border border-blue-100/50 backdrop-blur-sm shadow-[0_0_50px_rgba(219,234,254,0.3)] relative overflow-hidden">
+          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border-2 backdrop-blur-sm relative overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_70px_rgba(219,234,254,0.5)]"
+            style={{
+              animation: 'pulse-border 3s infinite ease-in-out',
+              backgroundSize: '200% 200%',
+              animationDelay: '0.5s',
+              boxShadow: '0 0 30px rgba(219,234,254,0.3)',
+              backgroundImage: 'linear-gradient(135deg, rgba(239,246,255,0.8) 0%, rgba(255,255,255,0.9) 50%, rgba(238,242,255,0.8) 100%)',
+              borderColor: 'rgba(219, 234, 254, 0.5)',
+            }}
+          >
             <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl font-bold text-gray-900 mb-4">
                 {`Hi, I'm Vincent 👋`}

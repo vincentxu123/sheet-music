@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(219, 234, 254, 0.5);
+    box-shadow: 0 0 15px rgba(219, 234, 254, 0.3);
+  }
+  25% {
+    border-color: rgba(191, 219, 254, 0.7);
+    box-shadow: 0 0 25px rgba(191, 219, 254, 0.4);
+  }
+  50% {
+    border-color: rgba(147, 197, 253, 0.9);
+    box-shadow: 0 0 40px rgba(147, 197, 253, 0.6);
+  }
+  75% {
+    border-color: rgba(191, 219, 254, 0.7);
+    box-shadow: 0 0 25px rgba(191, 219, 254, 0.4);
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
