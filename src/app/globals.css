@@ -24,6 +24,7 @@
   --foreground: #171717;
   --background-size: 24px 24px;
   --background-image: radial-gradient(circle at 1px 1px, #e0e7ff 1px, transparent 0);
+  --svg-fill: #000000;
 }
 
 @theme inline {
@@ -37,6 +38,7 @@
   :root {
     --background: #D2D2D2;
     --foreground: #ededed;
+    --svg-fill: #ffffff;
   }
 }
 
