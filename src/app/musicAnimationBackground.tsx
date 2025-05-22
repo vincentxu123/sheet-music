@@ -77,7 +77,7 @@ const drawNote = (ctx: CanvasRenderingContext2D, note: Note) => {
 };
 
 
-const MusicNotesBackground: React.FC = () => {
+const MusicAnimationBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const notesRef = useRef<Note[]>([]);
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -229,4 +229,4 @@ const MusicNotesBackground: React.FC = () => {
   );
 };
 
-export default MusicNotesBackground;
+export default MusicAnimationBackground;
