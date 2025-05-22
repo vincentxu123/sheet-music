@@ -22,7 +22,13 @@ export const Collection = ({ setSelectedSong }: CollectionProps) => {
             <div
               key={sheet.id}
               onClick={() => setSelectedSong(sheet)}
-              className="cursor-pointer rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.1)] border border-blue-50 bg-white group"
+              className={`cursor-pointer rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.1)] border bg-white group ${
+                sheet.difficulty === "Beginner"
+                  ? "pulse-border-green"
+                  : sheet.difficulty === "Intermediate"
+                  ? "pulse-border-yellow"
+                  : "pulse-border-red"
+              }`}
               role="button"
               tabIndex={0}
             >

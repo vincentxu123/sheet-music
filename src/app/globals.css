@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@keyframes pulse-border {
+@keyframes pulse-border-intro {
   0%, 100% {
     border-color: rgba(219, 234, 254, 0.5);
     box-shadow: 0 0 15px rgba(219, 234, 254, 0.3);
@@ -19,19 +19,99 @@
   }
 }
 
+@keyframes pulse-border-green {
+  0%, 100% {
+    border-color: rgba(34, 197, 94, 0.5);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+  }
+  25% {
+    border-color: rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.6);
+  }
+  75% {
+    border-color: rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+  }
+}
+
+@keyframes pulse-border-yellow {
+  0%, 100% {
+    border-color: rgba(251, 191, 36, 0.5);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+  }
+  25% {
+    border-color: rgba(251, 191, 36, 0.7);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    border-color: rgba(251, 191, 36, 0.9);
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+  }
+  75% {
+    border-color: rgba(251, 191, 36, 0.7);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+  }
+}
+
+@keyframes pulse-border-red {
+  0%, 100% {
+    border-color: rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+  25% {
+    border-color: rgba(239, 68, 68, 0.7);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+  }
+  75% {
+    border-color: rgba(239, 68, 68, 0.7);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* Utility class for intro pulsing border (stronger effect) */
+.pulse-border-intro {
+  animation: pulse-border-intro 3s infinite ease-in-out;
+  animation-delay: 0.5s;
+  border-color: rgba(219, 234, 254, 0.5) !important;
+  box-shadow: 0 0 30px rgba(219,234,254,0.3);
+}
+
+/* More subtle pulsing for sheet music cards */
+.pulse-border-green {
+  animation: pulse-border-green 3s infinite ease-in-out;
+  animation-delay: 0.5s;
+  border-color: rgba(34, 197, 94, 0.25) !important;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.14);
+}
+
+.pulse-border-yellow {
+  animation: pulse-border-yellow 3s infinite ease-in-out;
+  animation-delay: 0.5s;
+  border-color: rgba(251, 191, 36, 0.25) !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.14);
+}
+
+.pulse-border-red {
+  animation: pulse-border-red 3s infinite ease-in-out;
+  animation-delay: 0.5s;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.14);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --background-size: 24px 24px;
   --background-image: radial-gradient(circle at 1px 1px, #e0e7ff 1px, transparent 0);
   --svg-fill: #000000;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {

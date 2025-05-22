@@ -4,14 +4,10 @@ import { Code, Github, Linkedin, Mail, MapPin, Music } from "lucide-react"
 export const Introduction = () => {
     return (
         <div className="container mx-auto py-12">
-          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border-2 backdrop-blur-sm relative overflow-hidden transition-all duration-300"
+          <div className="mb-20 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-50/80 via-white/90 to-indigo-50/80 border-2 backdrop-blur-sm relative overflow-hidden transition-all duration-300 pulse-border-intro"
             style={{
-              animation: 'pulse-border 3s infinite ease-in-out',
               backgroundSize: '200% 200%',
-              animationDelay: '0.5s',
-              boxShadow: '0 0 30px rgba(219,234,254,0.3)',
-              backgroundImage: 'linear-gradient(135deg, rgba(239,246,255,0.8) 0%, rgba(255,255,255,0.9) 50%, rgba(238,242,255,0.8) 100%)',
-              borderColor: 'rgba(219, 234, 254, 0.5)',
+              backgroundImage: 'linear-gradient(135deg, rgba(239,246,255,0.8) 0%, rgba(255,255,255,0.9) 50%, rgba(238,242,255,0.8) 100%)'
             }}
           >
             <div className="max-w-3xl mx-auto">

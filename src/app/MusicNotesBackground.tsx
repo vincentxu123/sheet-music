@@ -146,7 +146,7 @@ const MusicNotesBackground: React.FC = () => {
         ) {
           // Spawn new note from random edge
           const spawnEdge = Math.floor(Math.random() * 4); // 0: left, 1: right, 2: top, 3: bottom
-          let newNote = randomNote(width, height);
+          const newNote = randomNote(width, height);
           switch (spawnEdge) {
             case 0: // left
               newNote.x = -40;
