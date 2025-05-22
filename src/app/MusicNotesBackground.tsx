@@ -9,6 +9,7 @@ import {
 } from "./constants";
 
 const NOTE_COUNT = 10;
+const DEFAULT_BASE_SIZE = 24;
 const COLOR_PALETTE = ["#bc4d67", "#ae9332", "#139f7b", "#118AB2", "#1782a6", "#66b2b2", "#5c8374", "#8e05c2", "#a27b5c", "#ef88ad", "#8c3061", "#4c3bcf", "#e19898", "#395b64", "#ed6663", "#000000", "#000000", "#000000"];
 const MUSIC_SYMBOL_SVG_LIST = [SINGLE_MUSIC_NOTE, MULTI_MUSIC_NOTE, TREBLE_CLEFF, BASS_CLEFF];
 const MUSIC_NOTES_TOGGLE_KEY = "musicNotesAnimation";
@@ -37,8 +38,8 @@ const randomNote = (width: number, height: number): Note => {
   const color = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
   const angle = Math.random() * Math.PI * 2;
   const speed = 0.4 + Math.random() * 0.7;
-  // --- size: make slightly bigger (was 24 + rand * 14; now 32 + rand * 20)
-  const size = 32 + Math.random() * 20;
+
+  const size = DEFAULT_BASE_SIZE + Math.random() * 20;
   const rotationSpeed = (Math.random() - 0.5) * 0.01;
   const opacity = 0.6 + Math.random() * 0.35;
 
