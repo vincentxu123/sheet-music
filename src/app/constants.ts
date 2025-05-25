@@ -26,7 +26,7 @@ export const sheetMusicData: SelectedSong[] = [
       year: 2019,
       thumbnail: racingIntoTheNightThumbnail,
       fullSheets: "/racing_into_the_night/full_sheets.pdf",
-      difficulty: "Intermediate",
+      difficulty: "Advanced",
       musescoreLink: "https://musescore.com/user/14842106/scores/24385660/s/4mReTU",
     },
     {
