@@ -1,5 +1,28 @@
 import React, { useEffect, useRef } from 'react';
 
+interface Ripple {
+  x: number;
+  y: number;
+  maxRadius: number;
+  speed: number;
+  startTime: number;
+}
+
+const COLORS = {
+  BASE_GRADIENT_START: '#fff9f5',
+  BASE_GRADIENT_END: '#fff6e5',
+  RIPPLE: '#ffd6a5',
+} as const;
+
+const RIPPLE_CONFIG = {
+  INTERVAL_MS: 1500,
+  MIN_RADIUS: 150,
+  MAX_ADDITIONAL_RADIUS: 150,
+  ANIMATION_SPEED: 0.17,
+  INNER_RING_RATIO: 0.7,
+  OUTER_RING_RATIO: 0.85,
+} as const;
+
 const WarmWaveBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -12,9 +35,10 @@ const WarmWaveBackground: React.FC = () => {
 
     let animationFrameId: number;
     let time = 0;
+    let currentRipple: Ripple | null = null;
 
-    // Set canvas size with device pixel ratio
-    const setCanvasSize = () => {
+    // Canvas setup with DPI handling
+    const setupCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * dpr;
@@ -22,101 +46,93 @@ const WarmWaveBackground: React.FC = () => {
       ctx.scale(dpr, dpr);
     };
 
-    // Initial setup
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
-
-    // Single ripple state
-    let currentRipple: {
-      x: number;
-      y: number;
-      maxRadius: number;
-      speed: number;
-      startTime: number;
-    } | null = null;
-
-    // Add new ripple
-    const addRipple = () => {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      const maxRadius = 150 + Math.random() * 150;
-      const speed = 0.17;
-      
-      currentRipple = {
-        x,
-        y,
-        maxRadius,
-        speed,
-        startTime: time,
-      };
+    // Draw base gradient background
+    const drawBackground = () => {
+      const baseGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      baseGradient.addColorStop(0, COLORS.BASE_GRADIENT_START);
+      baseGradient.addColorStop(1, COLORS.BASE_GRADIENT_END);
+      ctx.fillStyle = baseGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
-    // Start with one ripple
-    addRipple();
+    // Create a new ripple with random position
+    const createRipple = (): Ripple => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      maxRadius: RIPPLE_CONFIG.MIN_RADIUS + Math.random() * RIPPLE_CONFIG.MAX_ADDITIONAL_RADIUS,
+      speed: RIPPLE_CONFIG.ANIMATION_SPEED,
+      startTime: time,
+    });
 
-    // Add new ripple every 1.5 seconds
-    const rippleInterval = setInterval(addRipple, 1500);
+    // Draw a single ripple
+    const drawRipple = (ripple: Ripple) => {
+      const age = (time - ripple.startTime) * ripple.speed;
+      const radius = ripple.maxRadius * Math.min(age, 1);
+      const opacity = Math.max(0, 1 - age);
 
+      if (opacity <= 0) return;
+
+      // Draw ripple gradient
+      const gradient = ctx.createRadialGradient(
+        ripple.x, ripple.y, 0,
+        ripple.x, ripple.y, radius
+      );
+
+      const getHexOpacity = (alpha: number) => 
+        Math.floor(opacity * alpha * 255).toString(16).padStart(2, '0');
+
+      gradient.addColorStop(0, 'transparent');
+      gradient.addColorStop(0.2, `${COLORS.RIPPLE}${getHexOpacity(0.08)}`);
+      gradient.addColorStop(0.5, `${COLORS.RIPPLE}${getHexOpacity(0.12)}`);
+      gradient.addColorStop(0.8, `${COLORS.RIPPLE}${getHexOpacity(0.08)}`);
+      gradient.addColorStop(1, 'transparent');
+
+      // Draw main ripple
+      ctx.beginPath();
+      ctx.fillStyle = gradient;
+      ctx.arc(ripple.x, ripple.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw outer ring
+      ctx.beginPath();
+      ctx.strokeStyle = `${COLORS.RIPPLE}${getHexOpacity(0.2)}`;
+      ctx.lineWidth = 2;
+      ctx.arc(ripple.x, ripple.y, radius * RIPPLE_CONFIG.OUTER_RING_RATIO, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Draw inner ring
+      ctx.beginPath();
+      ctx.strokeStyle = `${COLORS.RIPPLE}${getHexOpacity(0.15)}`;
+      ctx.lineWidth = 1.5;
+      ctx.arc(ripple.x, ripple.y, radius * RIPPLE_CONFIG.INNER_RING_RATIO, 0, Math.PI * 2);
+      ctx.stroke();
+    };
+
+    // Animation loop
     const animate = () => {
       if (!ctx || !canvas) return;
       time += 0.016;
 
-      // Clear canvas with base gradient
-      const baseGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      baseGradient.addColorStop(0, '#fff9f5');
-      baseGradient.addColorStop(1, '#fff6e5');
-      ctx.fillStyle = baseGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw ripple if it exists
+      drawBackground();
       if (currentRipple) {
-        const age = (time - currentRipple.startTime) * currentRipple.speed;
-        const radius = currentRipple.maxRadius * Math.min(age, 1);
-        const opacity = Math.max(0, 1 - age);
-
-        if (opacity > 0) {
-          // Create gradient for ripple
-          const gradient = ctx.createRadialGradient(
-            currentRipple.x, currentRipple.y, 0,
-            currentRipple.x, currentRipple.y, radius
-          );
-
-          // Consistent color stops with increased opacity
-          const rippleColor = '#ffd6a5';
-          gradient.addColorStop(0, 'transparent');
-          gradient.addColorStop(0.2, `${rippleColor}${Math.floor(opacity * 0.08 * 255).toString(16).padStart(2, '0')}`);
-          gradient.addColorStop(0.5, `${rippleColor}${Math.floor(opacity * 0.12 * 255).toString(16).padStart(2, '0')}`);
-          gradient.addColorStop(0.8, `${rippleColor}${Math.floor(opacity * 0.08 * 255).toString(16).padStart(2, '0')}`);
-          gradient.addColorStop(1, 'transparent');
-
-          ctx.beginPath();
-          ctx.fillStyle = gradient;
-          ctx.arc(currentRipple.x, currentRipple.y, radius, 0, Math.PI * 2);
-          ctx.fill();
-
-          // More visible rings with consistent opacity
-          ctx.beginPath();
-          ctx.strokeStyle = `${rippleColor}${Math.floor(opacity * 0.2 * 255).toString(16).padStart(2, '0')}`;
-          ctx.lineWidth = 2;
-          ctx.arc(currentRipple.x, currentRipple.y, radius * 0.85, 0, Math.PI * 2);
-          ctx.stroke();
-
-          // Second inner ring with consistent opacity
-          ctx.beginPath();
-          ctx.strokeStyle = `${rippleColor}${Math.floor(opacity * 0.15 * 255).toString(16).padStart(2, '0')}`;
-          ctx.lineWidth = 1.5;
-          ctx.arc(currentRipple.x, currentRipple.y, radius * 0.7, 0, Math.PI * 2);
-          ctx.stroke();
-        }
+        drawRipple(currentRipple);
       }
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    // Initial setup
+    setupCanvas();
+    window.addEventListener('resize', setupCanvas);
+    currentRipple = createRipple();
+    const rippleInterval = setInterval(() => {
+      currentRipple = createRipple();
+    }, RIPPLE_CONFIG.INTERVAL_MS);
+
     animate();
 
     return () => {
-      window.removeEventListener('resize', setCanvasSize);
+      window.removeEventListener('resize', setupCanvas);
       cancelAnimationFrame(animationFrameId);
       clearInterval(rippleInterval);
     };
@@ -127,7 +143,7 @@ const WarmWaveBackground: React.FC = () => {
       ref={canvasRef}
       className="fixed inset-0 -z-20 w-full h-full"
       style={{ 
-        background: 'linear-gradient(135deg, #fff9f5, #fff6e5)',
+        background: `linear-gradient(135deg, ${COLORS.BASE_GRADIENT_START}, ${COLORS.BASE_GRADIENT_END})`,
       }}
       aria-hidden="true"
     />
