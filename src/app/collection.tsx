@@ -16,8 +16,22 @@ interface SongPreviewProps {
 }
 
 export const Collection = ({ setSelectedSong }: CollectionProps) => {
+    const musicCollectionStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Vincent's Sheet Music Collection",
+      "description": "Piano sheet music arrangements by Vincent Xu",
+      "url": "https://vincentxu.dev",
+      "creator": "Vincent Xu"
+    };
+
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(musicCollectionStructuredData) }}
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {sheetMusicData.map((sheet) => (
             <div
               key={sheet.id}
@@ -51,7 +65,8 @@ export const Collection = ({ setSelectedSong }: CollectionProps) => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </>
     )
 }
 

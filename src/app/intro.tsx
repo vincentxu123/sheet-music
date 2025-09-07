@@ -25,7 +25,7 @@ export const Introduction = () => {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Music className="w-4 h-4" />
-                  <span>Piano Player</span>
+                  <span>Pianist</span>
                 </div>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
