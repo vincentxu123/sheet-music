@@ -13,14 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vincent Xu Personal Website",
-  description: "Collection of piano sheet music arrangements by Vincent Xu. Features J-Pop, jazz, and contemporary pieces with beginner to advanced difficulty levels.",
-  openGraph: {
-    title: "Vincent's Sheet Music - Piano Arrangements by Vincent Xu",
-    description: "Collection of piano sheet music arrangements by Vincent Xu. Features J-Pop, jazz, and contemporary pieces.",
-    url: 'https://vincentxu.dev',
-    type: 'website',
-  },
+  title: "Vincent Xu - Piano Arrangements",
+  keywords: ["Vincent Xu", "Piano Arrangements", "vincentxu.dev"],
+  description: "Piano sheet music arrangements by Vincent Xu. J-Pop, jazz, and contemporary pieces with beginner to advanced difficulty levels.",
   robots: {
     index: true,
     follow: true,
