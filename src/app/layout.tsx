@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'google25f9d2d72852ce4b',
   },
+  alternates: {
+    canonical: 'https://vincentxu.dev',
+  },
 };
 
 export default function RootLayout({
