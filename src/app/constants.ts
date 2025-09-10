@@ -52,7 +52,7 @@ export const sheetMusicData: SelectedSong[] = [
     },
     {
       id: 4,
-      title: "紅豆",
+      title: "紅豆 (Red Bean)",
       composer: "Faye Wong",
       year: 1998,
       thumbnail: redBeanThumbnail,
