@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vincent Xu - Piano Arrangements",
-  keywords: ["Vincent Xu", "Piano Arrangements", "vincentxu.dev"],
+  title: "Vincent Xu",
+  keywords: ["Vincent Xu", "Piano Arrangements", "Sheet Music","vincentxu.dev"],
   description: "Piano sheet music arrangements by Vincent Xu. J-Pop, jazz, and contemporary pieces with beginner to advanced difficulty levels.",
   robots: {
     index: true,
