@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     google: 'google25f9d2d72852ce4b',
   },
   alternates: {
-    canonical: 'https://vincentxu.dev',
+    canonical: 'https://vincentxu.dev/',
   },
 };
 
