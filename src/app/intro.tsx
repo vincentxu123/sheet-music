@@ -29,9 +29,8 @@ export const Introduction = () => {
                 </div>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                {`This collection of piano sheet music includes my own arrangements to songs that I've found
-                interesting throughout the past years. These songs can range from J-Pop to jazz with no
-                particular category. More sheets to come!`}
+                {`Maybe I'll include other stuff here later, but for now I'm using this as a place to share some
+                of my piano arrangements for songs that I've found interesting. More sheets to come!`}
               </p>
 
               <div className="h-px bg-blue-100 my-6" />
