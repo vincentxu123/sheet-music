@@ -3,6 +3,7 @@ import marchSnowThumbNail from '../../public/march_snow/thumbnail.jpg';
 import cantTakeMyEyesOffYouThumbnail from '../../public/cant_take_my_eyes_off_you/thumbnail.jpg';
 import redBeanThumbnail from '../../public/red_bean/thumbnail.png';
 import someThumbnail from '../../public/some/thumbnail.jpg';
+import iThinkTheyCallThisLoveThumbnail from '../../public/i_think_they_call_this_love/thumbnail.jpg';
 
 import { StaticImageData } from 'next/image';
 
@@ -67,8 +68,18 @@ export const sheetMusicData: SelectedSong[] = [
       year: 2019,
       thumbnail: someThumbnail,
       fullSheets: "/some/full_sheets.pdf",
-      difficulty: "Advanced",
+      difficulty: "Intermediate",
       musescoreLink: "https://musescore.com/user/14842106/scores/27383944"
+    },
+    {
+      id: 6,
+      title: "I Think They Call This Love",
+      composer: "Elliot James Reay",
+      year: 2025,
+      thumbnail: iThinkTheyCallThisLoveThumbnail,
+      fullSheets: "/i_think_they_call_this_love/full_sheets.pdf",
+      difficulty: "Advanced",
+      musescoreLink: "https://musescore.com/user/14842106/scores/28724422"
     }
   ];
 
